@@ -1,0 +1,19 @@
+/build
+/dist
+
+# IDEA
+.idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+.checkstyle
+
+# Mac OS X
+.DS_Store
+
+# VI
+.*.swp
+.*.vim
