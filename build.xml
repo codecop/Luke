@@ -1,5 +1,5 @@
 <project name="Luke" default="dist">
-	<defaultexcludes add="**/CVS"/>
+	<defaultexcludes add=".git"/>
 	<property name="build.dir" value="build"/>
 	<property name="build.ver" value="4.0.0-BETA"/>
 	<property name="dist.dir" value="dist"/>
@@ -107,7 +107,12 @@
 	<target name="dist" depends="clean,jar">
 		<fileset dir=".">
 			<patternset id="distfiles">
+				<exclude name=".git/**"/>
+                <exclude name=".gitignore"/>
 				<exclude name="eclipse/**"/>
+			    <exclude name=".project"/>
+	            <exclude name=".classpath"/>
+	            <exclude name=".settings/**"/>
 				<exclude name="extras/**"/>
 				<exclude name="sandbox/**"/>
 				<exclude name="index/**"/>
