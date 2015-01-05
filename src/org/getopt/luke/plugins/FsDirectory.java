@@ -175,7 +175,7 @@ public class FsDirectory extends Directory {
       public boolean obtain() {
         return true;
       }
-      public void release() {
+      public void close() {
       }
       public boolean isLocked() {
         throw new UnsupportedOperationException();

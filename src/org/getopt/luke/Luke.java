@@ -3182,7 +3182,7 @@ public class Luke extends Thinlet implements ClipboardOwner {
     setString(sim, "text", s.getClass().getName());
     try {
       float newFVal = Float.parseFloat(getString(newNorm, "text"));
-      byte newBVal = Util.encodeNormValue(newFVal, f.name(), s);
+      long newBVal = Util.encodeNormValue(newFVal, f.name(), s);
       float encFVal = Util.decodeNormValue(newBVal, f.name(), s);
       setString(encNorm, "text", String.valueOf(encFVal) +
           " (0x" + Util.byteToHex(newBVal) + ")");

@@ -220,7 +220,7 @@ public class Util {
     return "???unknown type";
   }
   
-  public static float decodeNormValue(byte v, String fieldName, TFIDFSimilarity sim) throws Exception {
+  public static float decodeNormValue(long v, String fieldName, TFIDFSimilarity sim) throws Exception {
     try {
       return sim.decodeNormValue(v);
     } catch (Exception e) {
@@ -228,7 +228,7 @@ public class Util {
     }
   }
   
-  public static byte encodeNormValue(float v, String fieldName, TFIDFSimilarity sim) throws Exception {
+  public static long encodeNormValue(float v, String fieldName, TFIDFSimilarity sim) throws Exception {
     try {
       return sim.encodeNormValue(v);
     } catch (Exception e) {
