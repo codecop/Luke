@@ -110,7 +110,7 @@ public class Luke extends Thinlet implements ClipboardOwner {
 
   private static final long serialVersionUID = -470469999079073156L;
   
-  public static Version LV = Version.LUCENE_40;
+  public static Version LV = Version.LUCENE_4_10_2;
   
   private Directory dir = null;
   String pName = null;
@@ -1137,7 +1137,7 @@ public class Luke extends Thinlet implements ClipboardOwner {
       }
       showFiles(dir, null);
       if (ir instanceof CompositeReader) {
-        ar = new SlowCompositeReaderWrapper((CompositeReader)ir);
+        ar = SlowCompositeReaderWrapper.wrap(ir);
       } else if (ir instanceof AtomicReader) {
         ar = (AtomicReader)ir;
       }
