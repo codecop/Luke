@@ -19,7 +19,6 @@ import org.apache.lucene.store.IOContext;
 import org.apache.lucene.store.IndexInput;
 import org.apache.lucene.util.Version;
 import org.getopt.luke.Luke;
-import org.getopt.luke.KeepAllIndexDeletionPolicy;
 
 /**
  * This class allows us to peek at various Lucene internals, not available
@@ -240,7 +239,7 @@ public class IndexGate {
     infos.read(dir);
     int compound = 0, nonCompound = 0;
     for (int i = 0; i < infos.size(); i++) {
-      if (((SegmentInfoPerCommit)infos.info(i)).info.getUseCompoundFile()) {
+      if (infos.info(i).info.getUseCompoundFile()) {
         compound++;
       } else {
         nonCompound++;
@@ -252,9 +251,9 @@ public class IndexGate {
   public static void deletePendingFiles(Directory dir, IndexDeletionPolicy policy) throws Exception {
     SegmentInfos infos = new SegmentInfos();
     infos.read(dir);
-    IndexWriterConfig cfg = new IndexWriterConfig(Luke.LV, new WhitespaceAnalyzer(Luke.LV));
+    IndexWriterConfig cfg = new IndexWriterConfig(Luke.LV, new WhitespaceAnalyzer());
     IndexWriter iw = new IndexWriter(dir, cfg);
-    IndexFileDeleter deleter = new IndexFileDeleter(dir, policy, infos, null, iw);
+    IndexFileDeleter deleter = new IndexFileDeleter(dir, policy, infos, null, iw, initialIndexExists);
     deleter.close();
     iw.close();
   }

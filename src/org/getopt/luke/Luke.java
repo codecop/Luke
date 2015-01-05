@@ -1405,7 +1405,7 @@ public class Luke extends Thinlet implements ClipboardOwner {
       errorMsg("Error reading segment infos for '" + segName + ": " + e.toString());
       return;
     }
-    for (SegmentInfoPerCommit si : infos.asList()) {
+    for (SegmentCommitInfo si : infos.asList()) {
       Object r = create("row");
       add(segTable, r);
       Object cell = create("cell");
@@ -1451,9 +1451,9 @@ public class Luke extends Thinlet implements ClipboardOwner {
     if (row == null) {
       return;
     }
-    SegmentInfoPerCommit si = (SegmentInfoPerCommit)getProperty(row, "si");
+    SegmentCommitInfo si = (SegmentCommitInfo)getProperty(row, "si");
     if (si == null) {
-      showStatus("Missing SegmentInfoPerCommit???");
+      showStatus("Missing SegmentCommitInfo???");
       return;
     }
     Map<String,String> map = si.info.attributes();
