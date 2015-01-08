@@ -1424,7 +1424,7 @@ public class Luke extends Thinlet implements ClipboardOwner {
       setChoice(cell, "alignment", "right");
       cell = create("cell");
       add(r, cell);
-      setString(cell, "text", si.info.getVersion());
+      setString(cell, "text", si.info.getVersion().toString());
       cell = create("cell");
       add(r, cell);
       setString(cell, "text", si.info.getCodec().getName());
