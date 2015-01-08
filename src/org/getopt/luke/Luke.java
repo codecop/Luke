@@ -79,7 +79,6 @@ import org.apache.lucene.util.BytesRef;
 import org.apache.lucene.util.NumericUtils;
 import org.apache.lucene.util.Version;
 import org.apache.lucene.util.automaton.Automaton;
-import org.apache.lucene.util.automaton.State;
 import org.apache.lucene.util.automaton.Transition;
 import org.apache.lucene.queryparser.xml.CoreParser;
 import org.apache.lucene.queryparser.xml.CorePlusExtensionsParser;
@@ -4461,22 +4460,23 @@ public class Luke extends Thinlet implements ClipboardOwner {
     Object n = create("node");
     setString(n, "text", "Automaton: " + a != null ? a.toDot() : "null");
     add(parent, n);
-    State[] states = a.getNumberedStates();
-    for (State s : states) {
+    for (int s = 0; s < a.getNumStates(); s++) {
       Object n1 = create("node");
       add(n, n1);
       StringBuilder msg = new StringBuilder();
-      msg.append(String.valueOf(s.getNumber()));
-      if (a.getInitialState() == s) {
+      msg.append(String.valueOf(s));
+      if (0 == s) {
         msg.append(" INITIAL");
       }
-      msg.append(s.isAccept() ? " [accept]" : " [reject]");
-      msg.append(", " + s.numTransitions + " transitions");
+      msg.append(a.isAccept(s) ? " [accept]" : " [reject]");
+      msg.append(", " + a.getNumTransitions(s) + " transitions");
       setString(n1, "text", msg.toString());
-      for (Transition t : s.getTransitions()) {
+      Transition transition = new Transition();
+      for (int t = 0; t < a.getNumTransitions(s); t++) {
         Object n2 = create("node");
         add(n1, n2);
-        setString(n2, "text", t.toString());
+        a.getTransition(s, t, transition);
+        setString(n2, "text", transition.toString());
       }
     }
   }
