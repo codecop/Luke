@@ -122,6 +122,18 @@ public class Util {
     return bytesToHex(new byte[]{b}, 0, 1, false);
   }
 
+  public static String byteToHex(long b) {
+    byte b1 = (byte) (b & 255);
+    byte b2 = (byte) ((b << 8) & 255);
+    byte b3 = (byte) ((b << 16) & 255);
+    byte b4 = (byte) ((b << 24) & 255);
+    byte b5 = (byte) ((b << 32) & 255);
+    byte b6 = (byte) ((b << 40) & 255);
+    byte b7 = (byte) ((b << 48) & 255);
+    byte b8 = (byte) ((b << 56) & 255);
+    return bytesToHex(new byte[] { b1, b2, b3, b4, b5, b6, b7, b8 }, 0, 8, false);
+  }
+  
   public static String escape(String[] values, String sep) {
     if (values == null) return null;
     if (values.length == 0) return "";
