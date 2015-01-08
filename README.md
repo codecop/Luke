@@ -1,5 +1,7 @@
+*This is an unofficial fork from [SVN@Google Code/SF](https://code.google.com/p/luke/). I tried to upgrade Luke to the latest version of Lucene (4.10.2). Things do not look to good ;-) Maybe you can help?*
+
 # Luke
-Lucene Index Toolbox (unofficial fork from [SVN@Google Code/SF](https://code.google.com/p/luke/))
+Lucene Index Toolbox
 
 Lucene is an Open Source, mature and high-performance Java search engine. It is highly flexible, and scalable from hundreds to millions of documents.
 
