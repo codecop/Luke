@@ -1,4 +1,4 @@
-*This is an unofficial fork from [SVN@Google Code/SF](https://code.google.com/p/luke/). I tried to upgrade Luke to the latest version of Lucene (4.10.2). Things do not look to good ;-) Maybe you can help?*
+*This is an unofficial fork from [SVN@Google Code/SF](https://code.google.com/p/luke/). I tried to upgrade Luke to the latest version of Lucene (4.10.2). Things do not look too good ;-) Maybe you can help?*
 
 # Luke
 Lucene Index Toolbox
