@@ -20,7 +20,8 @@ Current stable release of Luke is 4.0.0-ALPHA and it includes Lucene 4.0.0-ALPHA
 Luke releases are numbered the same as the version of Lucene libraries that they use (plus a minor number in case of bugfix releases).
 
 Below is a screenshot of the application showing the Overview section, which displays the details of the index format and some overall statistics.
+
 [Luke Overview Tab](http://code.google.com/p/luke/source/browse/wiki/img/overview.png)
 
-## Code license
+### Code license
 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
