@@ -824,7 +824,8 @@ public class Luke extends Thinlet implements ClipboardOwner {
     }
     try {
       IndexWriter iw = createIndexWriter();
-      iw.commit(userData);
+      iw.setCommitData(userData);
+      iw.commit();
       iw.close();
       refreshAfterWrite();
     } catch (Exception e) {
