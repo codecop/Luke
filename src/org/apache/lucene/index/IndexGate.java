@@ -253,7 +253,7 @@ public class IndexGate {
     infos.read(dir);
     IndexWriterConfig cfg = new IndexWriterConfig(Luke.LV, new WhitespaceAnalyzer());
     IndexWriter iw = new IndexWriter(dir, cfg);
-    IndexFileDeleter deleter = new IndexFileDeleter(dir, policy, infos, null, iw, initialIndexExists);
+    IndexFileDeleter deleter = new IndexFileDeleter(dir, policy, infos, null, iw, true);
     deleter.close();
     iw.close();
   }
