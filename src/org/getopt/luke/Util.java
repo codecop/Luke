@@ -20,6 +20,7 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.DocValues;
 import org.apache.lucene.index.DocValues.Source;
 import org.apache.lucene.index.FieldInfo;
+import org.apache.lucene.index.FieldInfo.DocValuesType;
 import org.apache.lucene.index.SlowCompositeReaderWrapper;
 import org.apache.lucene.index.FieldInfo.IndexOptions;
 import org.apache.lucene.index.FieldInfos;
@@ -191,7 +192,7 @@ public class Util {
     return res;
   }
   
-  public static String normsToString(DocValues norms, String fName, int docid, TFIDFSimilarity sim) {
+  public static String normsToString(FieldInfo info, DocValues norms, String fName, int docid, TFIDFSimilarity sim) {
     if (norms == null) {
       return "-?-";
     }
@@ -202,7 +203,7 @@ public class Util {
       e1.printStackTrace();
       return "???" + e1.getMessage();
     }
-    switch (norms.getType()) {
+    switch (info.getNormType()) {
     case FIXED_INTS_8:
       if (sim != null) {
         try {
@@ -348,7 +349,7 @@ public class Util {
     return flags.toString();
   }
   
-  private static String dvToString(DocValues.Type type) {
+  private static String dvToString(DocValuesType type) {
     String fl;
     if (type == null) {
       return "???";

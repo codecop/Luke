@@ -2940,7 +2940,7 @@ public class Luke extends Thinlet implements ClipboardOwner {
       try {
         if (ar != null && info.hasNorms()) {
           DocValues norms = ar.normValues(fName);
-          String val = Util.normsToString(norms, fName, docid, sim);
+          String val = Util.normsToString(info, norms, fName, docid, sim);
           setString(cell, "text", val);
         } else {
           setString(cell, "text", "---");
