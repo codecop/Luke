@@ -799,9 +799,9 @@ public class Luke extends Thinlet implements ClipboardOwner {
       cfg.setIndexDeletionPolicy(policy);
       MergePolicy mp = cfg.getMergePolicy();
       if (mp instanceof LogMergePolicy) {
-        ((LogMergePolicy)mp).setUseCompoundFile(IndexGate.preferCompoundFormat(dir));
+        cfg.setUseCompoundFile(IndexGate.preferCompoundFormat(dir));
       } else if (mp instanceof TieredMergePolicy) {
-        ((TieredMergePolicy)cfg.getMergePolicy()).setUseCompoundFile(IndexGate.preferCompoundFormat(dir));
+        cfg.setUseCompoundFile(IndexGate.preferCompoundFormat(dir));
       }
       IndexWriter iw = new IndexWriter(dir, cfg);
       return iw;
@@ -2412,12 +2412,12 @@ public class Luke extends Thinlet implements ClipboardOwner {
           cfg.setTermIndexInterval(tii);
           MergePolicy p = cfg.getMergePolicy();
           if (p instanceof LogMergePolicy) {
-            ((LogMergePolicy)p).setUseCompoundFile(useCompound);
+            cfg.setUseCompoundFile(useCompound);
             if (useCompound) {
               ((LogMergePolicy)p).setNoCFSRatio(1.0);
             }
           } else if (p instanceof TieredMergePolicy) {
-            ((TieredMergePolicy)p).setUseCompoundFile(useCompound);            
+            cfg.setUseCompoundFile(useCompound);            
             if (useCompound) {
               ((TieredMergePolicy)p).setNoCFSRatio(1.0);
             }
